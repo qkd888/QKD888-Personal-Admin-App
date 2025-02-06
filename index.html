@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="nav">
+            <button class="nav-btn active" data-section="tasks">Tasks</button>
+            <button class="nav-btn" data-section="notes">Notes</button>
+            <button class="nav-btn" data-section="links">Quick Links</button>
+            <button class="nav-btn" data-section="habits">Habits</button>
+            <button class="nav-btn" data-section="budget">Budget</button>
+            <button class="nav-btn" data-section="health">Health</button>
+        </nav>
+
+        <!-- Sections -->
+        <section id="tasks" class="section active">
+            <h2>Tasks</h2>
+            <input type="text" class="input task-input" placeholder="Add a new task...">
+            <ul class="todo-list"></ul>
+        </section>
+
+        <section id="notes" class="section">
+            <h2>Notes</h2>
+            <textarea class="input" style="height: 300px; resize: vertical;" placeholder="Write your notes here..."></textarea>
+        </section>
+
+        <section id="links" class="section">
+            <h2>My Links</h2>
+            <div class="grid">
+                <div class="quick-link" data-url="https://gmail.com">📧 Email</div>
+                <div class="quick-link" data-url="https://calendar.google.com">📅 Calendar</div>
+                <div class="quick-link" data-url="https://drive.google.com">📁 Drive</div>
+                <div class="quick-link" data-url="https://youtube.com">▶️ YouTube</div>
+                <div class="quick-link" data-url="https://linkedin.com">💼 LinkedIn</div>
+                <div class="quick-link" data-url="https://github.com">💻 GitHub</div>
+                <div class="quick-link" data-url="https://netflix.com">🎬 Netflix</div>
+                <div class="quick-link" data-url="https://spotify.com">🎵 Spotify</div>
+                <div class="quick-link" data-url="https://news24.com">📰 News24</div>
+                <div class="quick-link" data-url="https://facebook.com">💬 Facebook</div>
+            </div>
+        </section>
+
+        <section id="habits" class="section">
+            <h2>My Habits</h2>
+            <div class="habit-grid"></div>
+        </section>
+
+        <section id="budget" class="section">
+            <h2> my Budget</h2>
+            <div class="grid">
+                <div>
+                    <input type="number" class="input" id="income" placeholder="Income Amount">
+                    <input type="text" class="input" id="income-desc" placeholder="Income Description">
+                    <button class="nav-btn" onclick="addTransaction('income')">Add Income</button>
+                </div>
+                <div>
+                    <input type="number" class="input" id="expense" placeholder="Expense Amount">
+                    <input type="text" class="input" id="expense-desc" placeholder="Expense Description">
+                    <button class="nav-btn" onclick="addTransaction('expense')">Add Expense</button>
+                </div>
+                <div>
+                    <h3>Total Balance: R<span id="total">0</span></h3>
+                </div>
+            </div>
+            <div class="transaction-list"></div>
+        </section>
+
+        <section id="health" class="section">
+            <h2> my Health</h2>
+            <h3>Daily Water Intake Goal: 2L (8 glasses)</h3>
+            <div class="water-tracker"></div>
+            <div class="water-info">
+                Current intake: <span id="water-amount">0</span>ml (<span id="water-percentage">0</span>% of daily goal)
+            </div>
+            <h3>My Exercise Log</h3>
+            <input type="text" class="input" id="exercise-input" placeholder="What exercise did you do today?">
+            <input type="number" class="input" id="exercise-duration" placeholder="Duration (minutes)">
+            <button class="nav-btn" onclick="logExercise()">Log Exercise</button>
+            <div id="exercise-log" style="margin-top: 20px;"></div>
+        </section>
+    </div>
+
+    <!-- Habit Modal -->
+    <div id="habit-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeHabitModal()">&times;</button>
+            <h2>Day <span id="selected-day"></span> Habits</h2>
+            <input type="text" class="input" id="habit-input" placeholder="Enter a habit...">
+            <button class="nav-btn" onclick="addHabit()">Add Habit</button>
+            <div id="habit-list" style="margin-top: 20px;"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
